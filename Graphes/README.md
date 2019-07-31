@@ -8,12 +8,16 @@ Le langage utilisé pour formaliser les graphes et générer les images est le l
 
 # Partie logiciel
 Installation sur un Linux :
-```sudo apt-get install graphviz```
+```batch
+sudo apt-get install graphviz
+```
 
 [Documentation graphviz / DOT](https://www.graphviz.org/)
 
 Génération d'une image :
-```dot -Gratio=auto -Tpng -o nomDuGraphe.png nomDuGraphe.dot```
+```shell
+dot -Gratio=auto -Tpng -o nomDuGraphe.png nomDuGraphe.dot
+```
 
 
 # Rappel sur les graphes
@@ -23,13 +27,10 @@ Génération d'une image :
 
 # Liste des graphes
 *strict_graph_full*
+    C'est le graphe stricte de toutes les facettes du Rubik's Cube, coins et arêtes confondus (48 facettes de P01 à P48)
 
-C'est le graphe stricte de toutes les facettes du Rubik's Cube, coins et arêtes confondus (48 facettes de P01 à P48)
-
-*strict_graph_corners*
-
+*strict_graph_corners
 C'est le graphe stricte des coins (24 facettes de C01 à C24)
 
-*strict_graph_edge*
-
+*strict_graph_edge
 C'est le graphe stricte des arêtes (24 facettes de A01 à A24)
