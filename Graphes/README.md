@@ -8,12 +8,16 @@ Le langage utilisé pour formaliser les graphes et générer les images est le l
 
 # Partie logiciel
 Installation sur un Linux :
+```
 sudo apt-get install graphviz
+```
 
 [Documentation graphviz / DOT](https://www.graphviz.org/)
 
-Génération d'une image
-`dot -Gratio=auto -Tpng -o nomDuGraphe.png nomDuGraphe.dot`
+Génération d'une image :
+```
+dot -Gratio=auto -Tpng -o nomDuGraphe.png nomDuGraphe.dot
+```
 
 
 # Rappel sur les graphes
