@@ -26,11 +26,17 @@ dot -Gratio=auto -Tpng -o nomDuGraphe.png nomDuGraphe.dot
 
 
 # Liste des graphes
-*strict_graph_full*  
+1. *strict_graph_full*
++
 C'est le graphe stricte de toutes les facettes du Rubik's Cube, coins et arêtes confondus (48 facettes de P01 à P48)
++
 
-*strict_graph_corners*  
+2. *strict_graph_corners*
++
 C'est le graphe stricte des coins (24 facettes de C01 à C24)
++
 
-*strict_graph_edge*  
+3. *strict_graph_edge*
++
 C'est le graphe stricte des arêtes (24 facettes de A01 à A24)
++
