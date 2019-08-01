@@ -1,0 +1,121 @@
+digraph finite_state_machine {
+    A01 -> A02 [label="D"];
+    A01 -> A03 [label="D'"];
+    A01 -> A11 [label="F"];
+    A01 -> A16 [label="F'"];
+
+    A02 -> A01 [label="D'"];
+    A02 -> A04 [label="D"];
+    A02 -> A09 [label="R"];
+    A02 -> A14 [label="R'"];
+
+    A03 -> A01 [label="D"];
+    A03 -> A04 [label="D'"];
+    A03 -> A10 [label="L'"];
+    A03 -> A13 [label="L"];
+
+    A04 -> A02 [label="D'"];
+    A04 -> A03 [label="D"];
+    A04 -> A12 [label="B'"];
+    A04 -> A15 [label="B"];
+
+    A05 -> A06 [label="D'"];
+    A05 -> A08 [label="D"];
+    A05 -> A09 [label="F'"];
+    A05 -> A10 [label="F"];
+
+    A06 -> A05 [label="D"];
+    A06 -> A07 [label="D'"];
+    A06 -> A11 [label="L'"];
+    A06 -> A12 [label="L"];
+
+    A07 -> A06 [label="D"];
+    A07 -> A08 [label="D'"];
+    A07 -> A13 [label="B'"];
+    A07 -> A14 [label="B"];
+
+    A08 -> A07 [label="D"];
+    A08 -> A05 [label="D'"];
+    A08 -> A15 [label="R'"];
+    A08 -> A16 [label="R"];
+
+    A09 -> A02 [label="R'"];
+    A09 -> A05 [label="F"];
+    A09 -> A17 [label="F'"];
+    A09 -> A22 [label="R"];
+
+    A10 -> A03 [label="L"];
+    A10 -> A05 [label="F'"];
+    A10 -> A17 [label="F"];
+    A10 -> A23 [label="L'"];
+
+    A11 -> A01 [label="F'"];
+    A11 -> A06 [label="L"];
+    A11 -> A18 [label="L'"];
+    A11 -> A21 [label="F"];
+
+    A12 -> A04 [label="B"];
+    A12 -> A06 [label="L'"];
+    A12 -> A18 [label="L"];
+    A12 -> A24 [label="B'"];
+
+    A13 -> A03 [label="L'"];
+    A13 -> A07 [label="B"];
+    A13 -> A19 [label="B'"];
+    A13 -> A23 [label="L"];
+
+    A14 -> A02 [label="R"];
+    A14 -> A07 [label="B'"];
+    A14 -> A19 [label="B"];
+    A14 -> A22 [label="R'"];
+
+    A15 -> A04 [label="B'"];
+    A15 -> A08 [label="R"];
+    A15 -> A20 [label="R'"];
+    A15 -> A24 [label="B"];
+
+    A16 -> A01 [label="F"];
+    A16 -> A08 [label="R'"];
+    A16 -> A20 [label="R"];
+    A16 -> A21 [label="F'"];
+
+    A17 -> A09 [label="F"];
+    A17 -> A10 [label="F'"];
+    A17 -> A18 [label="."];
+    A17 -> A20 [label="."];
+
+    A18 -> A11 [label="L"];
+    A18 -> A12 [label="L'"];
+    A18 -> A17 [label="U'"];
+    A18 -> A19 [label="U"];
+
+    A19 -> A13 [label="B"];
+    A19 -> A14 [label="B'"];
+    A19 -> A18 [label="U'"];
+    A19 -> A20 [label="U"];
+
+    A20 -> A15 [label="R"];
+    A20 -> A16 [label="R'"];
+    A20 -> A17 [label="U"];
+    A20 -> A19 [label="U'"];
+
+    A21 -> A11 [label="F'"];
+    A21 -> A16 [label="F"];
+    A21 -> A22 [label="U'"];
+    A21 -> A23 [label="U"];
+
+    A22 -> A09 [label="R'"];
+    A22 -> A14 [label="R"];
+    A22 -> A21 [label="U"];
+    A22 -> A24 [label="U'"];
+
+    A23 -> A10 [label="L"];
+    A23 -> A13 [label="L'"];
+    A23 -> A21 [label="U'"];
+    A23 -> A24 [label="U"];
+
+    A24 -> A12 [label="B"];
+    A24 -> A15 [label="B'"];
+    A24 -> A22 [label="U"];
+    A24 -> A23 [label="U'"];
+}

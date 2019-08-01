@@ -34,3 +34,12 @@ dot -Gratio=auto -Tpng -o nomDuGraphe.png nomDuGraphe.dot
 
 3. *strict_graph_edge*  
     C'est le graphe stricte des arêtes (24 facettes de A01 à A24)
+
+4. *oriented_graph_full*  
+    C'est le graphe orienté de toutes les facettes du Rubik's Cube, coins et arêtes confondus (48 facettes de P01 à P48)
+
+5. *oriented_graph_corners*  
+    C'est le graphe orienté des coins (24 facettes de C01 à C24)
+
+6. *oriented_graph_edge*  
+    C'est le graphe orienté des arêtes (24 facettes de A01 à A24)

@@ -1,0 +1,169 @@
+digraph finite_state_machine {
+    P01 -> C02 [label="D'"];
+    P01 -> C03 [label="D"];
+    P01 -> C07 [label="F"];
+    P01 -> C10 [label="R'"];
+    P01 -> C13 [label="R"];
+    P01 -> C20 [label="F'"];
+
+    C02 -> P01 [label="D"];
+    C02 -> C04 [label="D'"];
+    C02 -> C09 [label="L"];
+    C02 -> C12 [label="F'"];
+    C02 -> C14 [label="L'"];
+    C02 -> C15 [label="F"];
+
+    C03 -> P01 [label="D'"];
+    C03 -> C04 [label="D"];
+    C03 -> C05 [label="R"];
+    C03 -> C08 [label="D'"];
+    C03 -> C18 [label="R'"];
+    C03 -> C19 [label="B"];
+
+    C04 -> C02 [label="D"];
+    C04 -> C03 [label="D'"];
+    C04 -> C06 [label="L'"];
+    C04 -> C11 [label="B"];
+    C04 -> C16 [label="B'"];
+    C04 -> C17 [label="L"];
+
+    C05 -> C03 [label="R'"];
+    C05 -> C06 [label="F"];
+    C05 -> C07 [label="D'"];
+    C05 -> C11 [label="D"];
+    C05 -> C13 [label="F'"];
+    C05 -> C21 [label="R"];
+
+    C06 -> C04 [label="L"];
+    C06 -> C05 [label="F'"];
+    C06 -> C08 [label="D'"];
+    C06 -> C12 [label="D"];
+    C06 -> C14 [label="F"];
+    C06 -> C22 [label="L'"];
+
+    C07 -> P01 [label="F'"];
+    C07 -> C05 [label="D"];
+    C07 -> C08 [label="L"];
+    C07 -> C09 [label="D'"];
+    C07 -> C15 [label="L'"];
+    C07 -> C22 [label="F"];
+
+    C08 -> C03 [label="B"];
+    C08 -> C06 [label="D"];
+    C08 -> C07 [label="L'"];
+    C08 -> C10 [label="D'"];
+    C08 -> C16 [label="L"];
+    C08 -> C24 [label="B'"];
+
+    C09 -> C02 [label="L'"];
+    C09 -> C07 [label="D"];
+    C09 -> C10 [label="B"];
+    C09 -> C11 [label="D'"];
+    C09 -> C17 [label="B'"];
+    C09 -> C24 [label="L"];
+
+    C10 -> P01 [label="R"];
+    C10 -> C08 [label="D"];
+    C10 -> C09 [label="B'"];
+    C10 -> C12 [label="D'"];
+    C10 -> C18 [label="B"];
+    C10 -> C23 [label="R'"];
+
+    C11 -> C04 [label="B'"];
+    C11 -> C05 [label="D'"];
+    C11 -> C09 [label="D"];
+    C11 -> C12 [label="R"];
+    C11 -> C19 [label="R'"];
+    C11 -> C23 [label="B"];
+
+    C12 -> C02 [label="F"];
+    C12 -> C06 [label="D'"];
+    C12 -> C10 [label="D"];
+    C12 -> C11 [label="R'"];
+    C12 -> C20 [label="R"];
+    C12 -> C21 [label="F'"];
+
+    C13 -> P01 [label="R'"];
+    C13 -> C05 [label="F"];
+    C13 -> C14 [label="F'"];
+    C13 -> C15 [label="U"];
+    C13 -> C19 [label="U'"];
+    C13 -> C23 [label="R"];
+
+    C14 -> C02 [label="L"];
+    C14 -> C06 [label="F'"];
+    C14 -> C13 [label="F"];
+    C14 -> C16 [label="U"];
+    C14 -> C20 [label="U'"];
+    C14 -> C24 [label="L'"];
+
+    C15 -> C02 [label="F'"];
+    C15 -> C07 [label="L"];
+    C15 -> C13 [label="U'"];
+    C15 -> C16 [label="L'"];
+    C15 -> C17 [label="U"];
+    C15 -> C21 [label="F"];
+
+    C16 -> C04 [label="B"];
+    C16 -> C08 [label="L'"];
+    C16 -> C14 [label="U'"];
+    C16 -> C15 [label="L"];
+    C16 -> C18 [label="U"];
+    C16 -> C23 [label="B'"];
+
+    C17 -> C04 [label="L'"];
+    C17 -> C09 [label="B"];
+    C17 -> C15 [label="U'"];
+    C17 -> C18 [label="B'"];
+    C17 -> C19 [label="U"];
+    C17 -> C22 [label="L"];
+
+    C18 -> C03 [label="R"];
+    C18 -> C10 [label="B'"];
+    C18 -> C16 [label="U'"];
+    C18 -> C17 [label="B"];
+    C18 -> C20 [label="U"];
+    C18 -> C21 [label="R'"];
+
+    C19 -> C03 [label="B'"];
+    C19 -> C11 [label="R"];
+    C19 -> C13 [label="U"];
+    C19 -> C17 [label="U'"];
+    C19 -> C20 [label="R'"];
+    C19 -> C24 [label="B"];
+
+    C20 -> P01 [label="F"];
+    C20 -> C12 [label="R'"];
+    C20 -> C14 [label="U"];
+    C20 -> C18 [label="U'"];
+    C20 -> C19 [label="R"];
+    C20 -> C22 [label="F'"];
+
+    C21 -> C05 [label="R'"];
+    C21 -> C12 [label="F"];
+    C21 -> C15 [label="F'"];
+    C21 -> C18 [label="R"];
+    C21 -> C22 [label="U"];
+    C21 -> C23 [label="U'"];
+
+    C22 -> C06 [label="L"];
+    C22 -> C07 [label="F'"];
+    C22 -> C17 [label="L'"];
+    C22 -> C20 [label="F"];
+    C22 -> C21 [label="U'"];
+    C22 -> C24 [label="U"];
+
+    C23 -> C10 [label="R"];
+    C23 -> C11 [label="B'"];
+    C23 -> C13 [label="R'"];
+    C23 -> C16 [label="B"];
+    C23 -> C21 [label="U"];
+    C23 -> C24 [label="U'"];
+
+    C24 -> C08 [label="B"];
+    C24 -> C09 [label="L'"];
+    C24 -> C14 [label="L"];
+    C24 -> C19 [label="B'"];
+    C24 -> C22 [label="U'"];
+    C24 -> C23 [label="U"];
+}
