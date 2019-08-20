@@ -252,8 +252,8 @@ digraph finite_state_machine {
 
     P30 -> P21 [label="F"];
     P30 -> P22 [label="F'"];
-    P30 -> P33 [label="."];
-    P30 -> P39 [label="."];
+    P30 -> P33 [label="U"];
+    P30 -> P39 [label="U'"];
 
     P33 -> P23 [label="L"];
     P33 -> P24 [label="L'"];

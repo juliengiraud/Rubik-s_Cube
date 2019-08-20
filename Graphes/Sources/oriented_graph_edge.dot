@@ -81,8 +81,8 @@ digraph finite_state_machine {
 
     A17 -> A09 [label="F"];
     A17 -> A10 [label="F'"];
-    A17 -> A18 [label="."];
-    A17 -> A20 [label="."];
+    A17 -> A18 [label="U"];
+    A17 -> A20 [label="U'"];
 
     A18 -> A11 [label="L"];
     A18 -> A12 [label="L'"];
