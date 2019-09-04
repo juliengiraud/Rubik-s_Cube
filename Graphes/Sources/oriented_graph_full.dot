@@ -16,7 +16,7 @@ digraph finite_state_machine {
     P06 -> P01 [label="D'"];
     P06 -> P08 [label="D"];
     P06 -> P09 [label="R"];
-    P06 -> P14 [label="D'"];
+    P06 -> P14 [label="B'"];
     P06 -> P37 [label="R'"];
     P06 -> P38 [label="B"];
 
