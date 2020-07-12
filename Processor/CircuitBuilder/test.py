@@ -15,15 +15,6 @@ class UL(Enum): # Universal Language
     class Move:
         moves = ["R", "R'", "U", "U'", "L", "L'", "F", "F'", "D", "D'", "B", "B'"]
 
-    # faces = {
-    #     'N': array([-1, 0, 0]), # D/D' -> white
-    #     'R': array([0, 1, 0]), # R/R' -> red
-    #     'B': array([0, 0, 1]), # F/F' -> blue
-    #     'O': array([0, -1, 0]), # L/L' -> orange
-    #     'V': array([0, 0, -1]), # B/B' -> green
-    #     'J': array([1, 0, 0]) # U/U' -> yellow
-    # }
-
         def __init__(self, move):
             self.value = self.moves.index(move)+1 # R=1, R'=2, ..., B'=12
             self.name = move
@@ -54,7 +45,7 @@ class Sticker:
         self.stickerType = stickerType
         self.position = position
         self.name = stickerType.value + str(position)
-        self.solutions['transition'][stickerType.value][str(position)]
+        self.solution = self.solutions['transition'][stickerType.value][str(position)]
 
     def rotate(self, move):
         key = str(self.position) + move.value.name
@@ -62,8 +53,15 @@ class Sticker:
         if key in solutions:
             self.position = solutions[key]
 
-    def toString(self):
-        return self.name + '=' + str(self.position)
+    def toString(self, debug=False):
+        string = self.name + '=' + str(self.position)
+        if debug:
+            u = self.solution
+            string += ', (' + str(u[0]) + ', ' + str(u[1]) + ', ' + str(u[2]) + ')'
+        return string
+
+    def check(self):
+        return self.name == self.stickerType.value + str(self.position)
 
 class Cube:
     def __init__(self):
@@ -74,62 +72,38 @@ class Cube:
         for sticker in self.corners + self.edges:
             sticker.rotate(move)
 
-    def toString(self):
-        return ' '.join([sticker.toString() for sticker in self.corners]) \
+    def toString(self, debug=False):
+        joinParam = '\n' if debug else ' '
+        return joinParam.join([sticker.toString(debug=debug) for sticker in self.corners]) \
                 + "\n" + \
-                ' '.join([sticker.toString() for sticker in self.edges])
+                joinParam.join([sticker.toString(debug=debug) for sticker in self.edges])
 
-def generationVecteurs():
-    file=True
-    with open("generation.json") as file:
-        generation = json.load(file)
+    def check(self):
+        for sticker in self.corners + self.edges:
+            if not sticker.check():
+                return False
+        return True
 
-    coins = generation['coins']
-    aretes = generation['aretes']
-    faces = generation['faces']
-
-    print(coins)
-    print(aretes)
-    print(faces)
-
-    print('\ncoins')
-    i = 0
-    for coin in coins:
-        i += 1
-        val = array([0, 0, 0])
-        for lettre in coin:
-            if lettre != ' ':
-                val += faces[lettre]
-        print('"' + str(i) + '": [' + str(val[0]) + ', ' + str(val[1]) + ', ' + str(val[2]) + '],')
-
-    print('\naretes')
-    i = 0
-    for arete in aretes:
-        i += 1
-        val = array([0, 0, 0])
-        for lettre in arete:
-            if lettre != ' ':
-                val += faces[lettre]
-        print('"' + str(i) + '": [' + str(val[0]) + ', ' + str(val[1]) + ', ' + str(val[2]) + '],')
+def testRotate(cube):
+    cube.rotate(UL.R)
+    cube.rotate(UL.U)
+    cube.rotate(UL.L)
+    cube.rotate(UL.F)
+    cube.rotate(UL.D)
+    cube.rotate(UL.B)
+    cube.rotate(UL.B3)
+    cube.rotate(UL.D3)
+    cube.rotate(UL.F3)
+    cube.rotate(UL.L3)
+    cube.rotate(UL.U3)
+    cube.rotate(UL.R3)
 
 if __name__ == "__main__" :
-    # cube = Cube()
-    # print('Cube initiale\n' + cube.toString() + '\n')
+    cube = Cube()
+    print('Cube initiale\n' + cube.toString() + '\n')
 
-    # cube.rotate(UL.R)
-    # cube.rotate(UL.U)
-    # cube.rotate(UL.L)
-    # cube.rotate(UL.F)
-    # cube.rotate(UL.D)
-    # cube.rotate(UL.B)
-    # cube.rotate(UL.B3)
-    # cube.rotate(UL.D3)
-    # cube.rotate(UL.F3)
-    # cube.rotate(UL.L3)
-    # cube.rotate(UL.U3)
-    # cube.rotate(UL.R3)
-    #print('Cube après rotation R\n' + cube.toString())
+    print ('État avant test : ' + ('refait' if cube.check() else 'mélangé'))
+    testRotate(cube)
+    print ('État après test : ' + ('refait' if cube.check() else 'mélangé'))
 
-    # print('Cube après beaucoup de rotations\n' + cube.toString())
-
-    generationVecteurs()
+    print('Cube de débug\n' + cube.toString(debug=True) + '\n')
