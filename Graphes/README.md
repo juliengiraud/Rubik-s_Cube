@@ -12,6 +12,8 @@ Ce projet a pour but de représenter les relations entre les facettes d'un Rubik
 
 - La numérotation des facettes se fait selon le schéma ([voir PNG](./schema.png))
 
+- Pour utiliser le langage universel du Rubik's Cube il faut positionner la face rouge devant soit avec la jaune au dessus
+
 - S'il y a les 48 pièces dans un graphe, la numérotation est exactement la même que sur le schéma (de 1 à 48)
 
 - S'il n'y a que 24 pièces (coins ou arêtes) dans un graphe, la numérotation se fait de 1 à 24 suivant l'**ordre** du schéma
