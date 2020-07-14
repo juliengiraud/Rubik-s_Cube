@@ -4,17 +4,26 @@ import numpy as np
 '''
     u sticker
     v face of the move
-    return the equivalent of `np.linalg.norm(np.array(u)-np.array(v))`
 '''
 def getEcart(u, v):
     # Get the index of the dimension we want to check (the dimension of the rotation)
     for index, value in enumerate(v):
         if value != 0:
             i = index
-    # Check if u and v are on the same face (check if they both have the same sign)
+    # Check if u and v are on the same face
+    if u[i] == v[i] :
+        return 0
+    # Check if u is on the layer of v (it means they have the same sign)
     if u[i] * v[i] > 0:
-        return 'oui'
-    return 'non'
+        return 1
+    return 2
+
+def getResult(u, v):
+    ecart = getEcart(u, v)
+    # Nothing to change
+    if ecart == 2:
+        return u
+    return ''
 
 def getPiece(u):
     v = np.array([0, 0, 0])
@@ -45,6 +54,14 @@ if __name__ == "__main__" :
 
     fails = 0
 
+    dictTransition = {}
+    dictTransition['A'] = {}
+    dictTransition['C'] = {}
+    dictTransition['A']['clockwise'] = []
+    dictTransition['A']['counterclockwise'] = []
+    dictTransition['C']['clockwise'] = []
+    dictTransition['C']['counterclockwise'] = []
+
     for st in stickerType:
         for move in moves:
             for i in range(1, 25):
@@ -54,18 +71,20 @@ if __name__ == "__main__" :
                 u = transition[st][str(i)]
                 v = moveToFace[move]
                 w = transition[st][str(val)]
-                somme = getEcart(u, v)
+                testResult = getResult(u, v)
+                ecart = getEcart(u, v)
+                direction = 'clockwise' if move in ["R", "U", "L", "F", "D", "B"] else 'counterclockwise'
 
-                change = 'non' if i == val else 'oui'
+                change = i != val
 
-                if change != somme:
+                if testResult != w:
                     fails += 1
-
-                print('        Key+value :', st, key, '->', val, 'Rotation :', change, ',', somme)
-                print('        Sticker :', u)
-                print('        Move :   ', v)
-                print('        Result : ', w)
-                print('')
-            print('')
-        print('')
+                    dictTransition[st][direction].append([u, v, w])
+                    # print('Key+value :', st, key, '->', val, ', Rotation type :', ecart)
+                    # print('Sticker :    ', u)
+                    # print('Move :       ', v)
+                    # print('Result :     ', w)
+                    # print('TestResult : ', testResult)
+                    print('')
     print('fails :', fails)
+    print(dictTransition)
