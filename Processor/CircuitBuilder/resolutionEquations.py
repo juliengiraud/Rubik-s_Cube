@@ -2,37 +2,40 @@ import json
 import numpy as np
 
 def eqSolve(u, v):
+    if v[0] != 0:
+        dim = 0
+    elif v[1] != 0:
+        dim = 1
+    else:
+        dim = 2
+
+    if v[dim] < 0:
+        v[dim] += 3
+
     [a,b,c] = u
     [x,y,z] = v
 
+    w = [0,0,0]
+
+
     if [x,y,z] == [1, 0, 0]:
-        return [a,-c, b]
-    if [x,y,z] == [-2, 0, 0]:
-        return [a,-c, b]
-    if [x,y,z] == [-1, 0, 0]:
-        return [a, c,-b]
+        w = [a,-c, b]
     if [x,y,z] == [2, 0, 0]:
-        return [a, c,-b]
+        w = [a, c,-b]
 
     if [x,y,z] == [0, 1, 0]:
-        return [c, b,-a]
-    if [x,y,z] == [0,-2, 0]:
-        return [c, b,-a]
-    if [x,y,z] == [0,-1, 0]:
-        return [-c, b, a]
+        w = [c, b,-a]
     if [x,y,z] == [0, 2, 0]:
-        return [-c, b, a]
+        w = [-c, b, a]
 
     if [x,y,z] == [0, 0, 1]:
-        return [-b, a, c]
-    if [x,y,z] == [0, 0,-2]:
-        return [-b, a, c]
-    if [x,y,z] == [0, 0,-1]:
-        return [b,-a, c]
+        w = [-b, a, c]
     if [x,y,z] == [0, 0, 2]:
-        return [b,-a, c]
+        w = [b,-a, c]
 
-    return u
+    w[dim] = u[dim]
+
+    return w
 
 if __name__ == "__main__" :
 
