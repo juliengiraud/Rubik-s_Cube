@@ -18,12 +18,23 @@ def getEcart(u, v):
         return 1
     return 2
 
+def eqSolve(u, v):
+    val = v[0] + v[1] + v[2]
+    s = 1 if val in {2, -1} else -1
+
+    if v[0] != 0:
+        return [ u[0], s*u[2], -s*u[1] ]
+    elif v[1] != 0:
+        return [ -s*u[2], u[1], s*u[0] ]
+    else:
+        return [ s*u[1], -s*u[0], u[2] ]
+
 def getResult(u, v):
     ecart = getEcart(u, v)
     # Nothing to change
     if ecart == 2:
         return u
-    return ''
+    return eqSolve(u, v)
 
 def getPiece(u):
     v = np.array([0, 0, 0])

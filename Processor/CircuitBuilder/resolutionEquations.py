@@ -19,12 +19,14 @@ if __name__ == "__main__" :
         equations = json.load(file)
 
     eqA = equations['A']['clockwise'] + equations['A']['counterclockwise']
+    eqC = equations['C']['clockwise'] + equations['C']['counterclockwise']
 
     fails = 0
     count = 0
 
-    for eq in eqA:
+    for eq in eqA + eqC:
         count += 1
         if eqSolve(eq[0], eq[1]) != eq[2]:
             fails += 1
-    print(fails, count)
+
+    print(int(100*(1 - fails / count)), '% de réussite')
