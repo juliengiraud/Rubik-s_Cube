@@ -2,35 +2,15 @@ import json
 import numpy as np
 
 def eqSolve(u, v):
+    val = v[0] + v[1] + v[2]
+    s = 1 if val in {2, -1} else -1
+
     if v[0] != 0:
-        dim = 0
+        return [ u[0], s*u[2], -s*u[1] ]
     elif v[1] != 0:
-        dim = 1
+        return [ -s*u[2], u[1], s*u[0] ]
     else:
-        dim = 2
-
-    sign = 1
-    if v[dim] == 1 or v[dim] == -2:
-        sign = -1
-
-    w = [0,0,0]
-
-    w[dim] = u[dim]
-    if dim == 0:
-        w[dim+1] = sign * u[dim+2]
-        w[dim+2] = -sign * u[dim+1]
-
-    if dim == 1:
-        w[dim+1] = sign * u[dim-1]
-        w[dim-1] = -sign * u[dim+1]
-
-    if dim == 2:
-        w[dim-2] = sign * u[dim-1]
-        w[dim-1] = -sign * u[dim-2]
-
-
-
-    return w
+        return [ s*u[1], -s*u[0], u[2] ]
 
 if __name__ == "__main__" :
 
