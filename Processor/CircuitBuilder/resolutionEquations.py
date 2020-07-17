@@ -9,31 +9,26 @@ def eqSolve(u, v):
     else:
         dim = 2
 
-    if v[dim] < 0:
-        v[dim] += 3
-
-    [a,b,c] = u
-    [x,y,z] = v
+    sign = 1
+    if v[dim] == 1 or v[dim] == -2:
+        sign = -1
 
     w = [0,0,0]
 
-
-    if [x,y,z] == [1, 0, 0]:
-        w = [a,-c, b]
-    if [x,y,z] == [2, 0, 0]:
-        w = [a, c,-b]
-
-    if [x,y,z] == [0, 1, 0]:
-        w = [c, b,-a]
-    if [x,y,z] == [0, 2, 0]:
-        w = [-c, b, a]
-
-    if [x,y,z] == [0, 0, 1]:
-        w = [-b, a, c]
-    if [x,y,z] == [0, 0, 2]:
-        w = [b,-a, c]
-
     w[dim] = u[dim]
+    if dim == 0:
+        w[dim+1] = sign * u[dim+2]
+        w[dim+2] = -sign * u[dim+1]
+
+    if dim == 1:
+        w[dim+1] = sign * u[dim-1]
+        w[dim-1] = -sign * u[dim+1]
+
+    if dim == 2:
+        w[dim-2] = sign * u[dim-1]
+        w[dim-1] = -sign * u[dim-2]
+
+
 
     return w
 
