@@ -2,16 +2,8 @@ from enum import Enum
 import json
 from numpy import array
 
-class UL(Enum): # Universal Language
+class UL(Enum): # Langage universel
 
-    '''
-        N -> [-1, 0, 0]) -> D/D' -> white
-        R -> [0, 1, 0]) -> R/R' -> red
-        B -> [0, 0, 1]) -> F/F' -> blue
-        O -> [0, -1, 0]) -> L/L' -> orange
-        V -> [0, 0, -1]) -> B/B' -> green
-        J -> [1, 0, 0]) -> U/U' -> yellow
-    '''
     class Move:
         moves = ["R", "R'", "U", "U'", "L", "L'", "F", "F'", "D", "D'", "B", "B'"]
 
@@ -34,29 +26,29 @@ class UL(Enum): # Universal Language
 
 class StickerType(Enum):
     CORNER = 'C'
-    EDGE = 'A'
+    EDGE = 'E'
 
 class Sticker:
     file=True
-    with open("solutions.json") as file:
-        solutions = json.load(file)
+    with open("main_data.json") as file:
+        data = json.load(file)
 
     def __init__(self, stickerType, position):
         self.stickerType = stickerType
         self.position = position
         self.name = stickerType.value + str(position)
-        self.solution = self.solutions['transition'][stickerType.value][str(position)]
+        self.solveData = self.data[stickerType.value][str(position)]
 
     def rotate(self, move):
         key = str(self.position) + move.value.name
-        solutions = self.solutions[self.stickerType.value]
-        if key in solutions:
-            self.position = solutions[key]
+        data = self.data[self.stickerType.value]
+        if key in data:
+            self.position = data[key]
 
     def toString(self, debug=False):
         string = self.name + '=' + str(self.position)
         if debug:
-            u = self.solution
+            u = self.solveData
             string += ', (' + str(u[0]) + ', ' + str(u[1]) + ', ' + str(u[2]) + ')'
         return string
 

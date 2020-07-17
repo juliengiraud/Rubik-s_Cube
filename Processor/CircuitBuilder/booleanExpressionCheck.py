@@ -69,76 +69,66 @@ def get_move_number(move):
 def move2bin_str(move):
     return int2bin_str(get_move_number(move), 4)
 
-def valide_porte(entree, porte):
+def validate_gate(myInput, gate):
     bits = ["p1", "p2", "p3", "p4", "p5", "b1", "b2", "b3", "b4"]
     for i in range(9):
-        if bits[i] in porte and entree[i] == "0" or bits[i] + "'" in porte and entree[i] == "1":
+        if bits[i] in gate and myInput[i] == "0" or bits[i] + "'" in gate and myInput[i] == "1":
             return False
     return True
 
-def circuit_reader(entree, expressions):
+def circuit_reader(myInput, expressions):
     # Conversion de l'expression
     circuits = []
     for expression_str in expressions:
         expression = expression_str.replace(" ", "").replace("(", "").replace(")", "").split("+")
         circuit = []
-        for porte in expression:
-            circuit.append(porte.split("."))
+        for gate in expression:
+            circuit.append(gate.split("."))
         circuits.append(circuit)
-    sortie = ["0", "0", "0", "0", "0"]
+    myExit = ["0", "0", "0", "0", "0"]
 
     # Utilisation de l'expression
     for i in range(5):
-        for porte in circuits[i]: # Pour toutes les portes AND de la colone du circuit
-            if valide_porte(entree, porte): # Si l'entrée valide la porte
-                sortie[i] = "1"
+        for gate in circuits[i]: # Pour toutes les portes AND de la colone du circuit
+            if validate_gate(myInput, gate): # Si l'entrée valide la porte
+                myExit[i] = "1"
                 break
-    sortie_str = sortie[0]+sortie[1]+sortie[2]+sortie[3]+sortie[4]
+    exit_str = myExit[0]+myExit[1]+myExit[2]+myExit[3]+myExit[4]
 
-    return sortie_str
+    return exit_str
 
 moves = ["R", "R'", "U", "U'", "L", "L'", "F", "F'", "D", "D'", "B", "B'"]
 
 if __name__ == "__main__":
 
-    with open("circuits.json") as f_circuits:
+    with open("booleanExpression.json") as f_circuits:
         circuits = json.load(f_circuits)
 
     debug = False
     corners = circuits[0]["corners"]
     edges = circuits[0]["edges"]
-    valide = True
+    isGood = True
     for i in range(1, 25):
         for j in moves:
             sticker = int2bin_str(i, 5)
             move = move2bin_str(j)
-            entree = sticker + move
-            sortie_corners = circuit_reader(entree, corners)
-            sortie_edges = circuit_reader(entree, edges)
-            sortie_souhaite_corners = int2bin_str(processor_corners(i, j), 5)
-            sortie_souhaite_edges = int2bin_str(processor_edges(i, j), 5)
-            if sortie_corners == sortie_souhaite_corners and sortie_edges == sortie_souhaite_edges:
-                sortie = "GOOD"
+            myInput = sticker + move
+            exit_corners = circuit_reader(myInput, corners)
+            exit_edges = circuit_reader(myInput, edges)
+            exit_i_want_corners = int2bin_str(processor_corners(i, j), 5)
+            exit_i_want_edges = int2bin_str(processor_edges(i, j), 5)
+            if exit_corners == exit_i_want_corners and exit_edges == exit_i_want_edges:
+                myExit = "GOOD"
             else:
-                sortie = "BAD"
-                valide = False
+                myExit = "BAD"
+                isGood = False
             if debug:
                 print("Entrée humaine :", i, j.ljust(2, " "),
-                    "   Entrée machine :", sticker, move, entree,
-                    "   Sortie obtenue :", sortie_corners, sortie_edges,
-                    "   Sortie souhaitée :", sortie_souhaite_corners, sortie_souhaite_edges,
-                    "   ", sortie)
-    if valide:
+                    "   Entrée machine :", sticker, move, myInput,
+                    "   Sortie obtenue :", exit_corners, exit_edges,
+                    "   Sortie souhaitée :", exit_i_want_corners, exit_i_want_edges,
+                    "   ", myExit)
+    if isGood:
         print("Le circuit fonctionne")
     else:
         print("Le circuit ne fonctionne pas")
-
-# Exemple de class en Python
-class MyClass:
-    """A simple example class"""
-    i = 12345
-    def __init__(self, a, b):
-        self.x = realpart
-        self.y = imagpart
-    def f(self):
-        return 'hello world'

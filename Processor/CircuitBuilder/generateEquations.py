@@ -48,28 +48,26 @@ def getPiece(u):
 if __name__ == "__main__" :
 
     file=True
-    with open("solutions.json") as file:
-        solutions = json.load(file)
-    with open("generation.json") as file:
+    with open("main_data.json") as file:
+        data = json.load(file)
+    with open("stickers_vectors_generation.json") as file:
         generation = json.load(file)
 
-    coins = generation['coins']
-    aretes = generation['aretes']
-    transition = solutions['transition']
-    faces = transition['faces']
-    moveToFace = transition['move-to-face']
-    moveToFaceBis = transition['move-to-face-bis']
+    corners = generation['C']
+    aretes = generation['E']
+    faces = data['faces']
+    moveToFace = data['move-to-face']
 
     moves = ["R", "R'", "U", "U'", "L", "L'", "F", "F'", "D", "D'", "B", "B'"]
-    stickerType = ['A', 'C']
+    stickerType = ['E', 'C']
 
     fails = 0
 
     dictTransition = {}
-    dictTransition['A'] = {}
+    dictTransition['E'] = {}
     dictTransition['C'] = {}
-    dictTransition['A']['clockwise'] = []
-    dictTransition['A']['counterclockwise'] = []
+    dictTransition['E']['clockwise'] = []
+    dictTransition['E']['counterclockwise'] = []
     dictTransition['C']['clockwise'] = []
     dictTransition['C']['counterclockwise'] = []
 
@@ -77,11 +75,11 @@ if __name__ == "__main__" :
         for move in moves:
             for i in range(1, 25):
                 key = str(i) + move
-                sol = solutions[st]
+                sol = data[st]
                 val = int(sol[key]) if key in sol else i
-                u = transition[st][str(i)]
+                u = data[st][str(i)]
                 v = moveToFace[move]
-                w = transition[st][str(val)]
+                w = data[st][str(val)]
                 testResult = getResult(u, v)
                 ecart = getEcart(u, v)
                 direction = 'clockwise' if move in ["R", "U", "L", "F", "D", "B"] else 'counterclockwise'

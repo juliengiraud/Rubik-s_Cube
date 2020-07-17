@@ -18,15 +18,15 @@ if __name__ == "__main__" :
     with open("equations.json") as file:
         equations = json.load(file)
 
-    eqA = equations['A']['clockwise'] + equations['A']['counterclockwise']
+    eqE = equations['E']['clockwise'] + equations['E']['counterclockwise']
     eqC = equations['C']['clockwise'] + equations['C']['counterclockwise']
 
     fails = 0
-    count = 0
+    counts = 0
 
-    for eq in eqA + eqC:
-        count += 1
+    for eq in eqE + eqC:
+        counts += 1
         if eqSolve(eq[0], eq[1]) != eq[2]:
             fails += 1
 
-    print(int(100*(1 - fails / count)), '% de réussite')
+    print(int(100*(1 - fails / counts)), '% de réussite')
