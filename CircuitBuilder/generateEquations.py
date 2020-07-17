@@ -56,7 +56,7 @@ if __name__ == "__main__" :
     corners = generation['C']
     aretes = generation['E']
     faces = data['faces']
-    moveToFace = data['move-to-face']
+    moveToVector = data['move-to-vector']
 
     moves = ["R", "R'", "U", "U'", "L", "L'", "F", "F'", "D", "D'", "B", "B'"]
     stickerType = ['E', 'C']
@@ -78,7 +78,7 @@ if __name__ == "__main__" :
                 sol = data[st]
                 val = int(sol[key]) if key in sol else i
                 u = data[st][str(i)]
-                v = moveToFace[move]
+                v = moveToVector[move]
                 w = data[st][str(val)]
                 testResult = getResult(u, v)
                 ecart = getEcart(u, v)
