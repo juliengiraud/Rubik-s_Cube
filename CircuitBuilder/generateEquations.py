@@ -56,7 +56,7 @@ if __name__ == "__main__" :
     corners = generation['C']
     aretes = generation['E']
     faces = data['faces']
-    moveToVector = data['move-to-vector']
+    moveToVector = data['moveToVector']
 
     moves = ["R", "R'", "U", "U'", "L", "L'", "F", "F'", "D", "D'", "B", "B'"]
     stickerType = ['E', 'C']
