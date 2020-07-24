@@ -52,7 +52,7 @@ dot -Gratio=auto -Tpng -o nomDuGraphe.png nomDuGraphe.dot
 2. *strict_graph_corners*
     C'est le graphe stricte des coins (24 facettes de C01 à C24)
 
-3. *strict_graph_edge*
+3. *strict_graph_edges*
     C'est le graphe stricte des arêtes (24 facettes de A01 à A24)
 
 4. *oriented_graph_full*
@@ -61,5 +61,5 @@ dot -Gratio=auto -Tpng -o nomDuGraphe.png nomDuGraphe.dot
 5. *oriented_graph_corners*
     C'est le graphe orienté des coins (24 facettes de C01 à C24)
 
-6. *oriented_graph_edge*
+6. *oriented_graph_edges*
     C'est le graphe orienté des arêtes (24 facettes de A01 à A24)

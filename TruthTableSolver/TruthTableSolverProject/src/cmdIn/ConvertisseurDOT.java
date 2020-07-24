@@ -15,8 +15,8 @@ public class ConvertisseurDOT {
     public static void main(String args []) throws IOException {
         
         String[] files = new String[]{
-            "/home/julien/Bureau/main/Projets/Rubik-s_Cube/Graphes/Sources/oriented_graph_corners.dot",
-            "/home/julien/Bureau/main/Projets/Rubik-s_Cube/Graphes/Sources/oriented_graph_edge.dot"
+            "/home/finalgo/Bureau/main/Projets/Perso/Rubik-s_Cube/Graphes/Sources/oriented_graph_corners.dot",
+            "/home/finalgo/Bureau/main/Projets/Perso/Rubik-s_Cube/Graphes/Sources/oriented_graph_edge.dot"
         };
         
         for (int i = 0; i < files.length; i++) { // Pour chaque fichier
@@ -25,9 +25,9 @@ public class ConvertisseurDOT {
             System.out.println("## " + getFileNameFromFileSrc(files[i])); // Affichage du nom du fichier
             List<int[]> listeComplete = getTruthTable(valuesList);
             String[] listeCompleteString = getTruthTableToString(listeComplete);
-            //for (int j = 0; j < listeCompleteString.length; j++) System.out.println(listeCompleteString[j]);
+            for (int j = 0; j < listeCompleteString.length; j++) System.out.println(listeCompleteString[j]);
             
-            for (int j = 12; j < 17; j++) { // Pour chacune des 5 solutions
+            /*for (int j = 12; j < 17; j++) { // Pour chacune des 5 solutions
                 System.out.println("\n### Colone " + (j - 11));
                 int[] tableSolutions = getArraySolutions(listeCompleteString, j);
                 
@@ -57,7 +57,7 @@ public class ConvertisseurDOT {
                 par = answer.length() - answer.replace(")", "").length();
                 System.out.println("\n#### Version produit de sommes (" + par + ")\n\n" + answer);
             }
-            System.out.println();
+            System.out.println();*/
         }
         
     }
@@ -180,7 +180,7 @@ public class ConvertisseurDOT {
             nb = values.get(i);
             nb1 = padLeft(Integer.toBinaryString(nb[0]), '0', 5) + " ";
             nb2 = padLeft(Integer.toBinaryString(nb[1]), '0', 4) + " ";
-            nb3 = padLeft(Integer.toBinaryString(nb[2]), '0', 5);
+            nb3 = padLeft(nb[2] + "", '0', 5);
             s = nb1 + nb2 + nb3;
             s = s.replace(" 00000", " 22222");
             sortie[i] = s;
@@ -196,7 +196,7 @@ public class ConvertisseurDOT {
             BufferedReader reader = new BufferedReader(new FileReader(filename));
             while ((line = reader.readLine()) != null) {
                 int length = line.length();
-                if (length >= 27 && length <= 28) {
+                if (length >= 27 && length <= 29) {
                     // Formatage du texte
                     line = line.replace("    ", "");
                     line = line.replace("-> ", "");
