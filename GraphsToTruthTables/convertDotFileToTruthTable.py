@@ -6,7 +6,7 @@ def getTruthTableToString(values):
         nb = values[i]
         nb1 = str(bin(nb[0])[2:]).rjust(5, '0')
         nb2 = str(bin(nb[1])[2:]).rjust(4, '0') + " "
-        nb3 = str(nb[2]).rjust(5, '0')
+        nb3 = str(bin(nb[2])[2:]).rjust(5, '0')
         s = nb1 + nb2 + nb3
         s = s.replace(" 00000", " 22222")
         sortie[i] = s
@@ -117,13 +117,13 @@ def getvaluesFromFilename(filename):
 if __name__ == "__main__" :
     inputs = {
         1: {
-            "file": "../Graphes/Sources/oriented_graph_corners.dot",
-            "header": "p1 p2 p3 p4 p5 b1 b2 b3 b4",
+            "file": "../Graphs/Sources/oriented_graph_corners.dot",
+            "header": "p1 p2 p3 p4 p5 b1 b2 b3 b4, s1 s2 s3 s4 s5",
             "output": open("output_corners.txt", "w")
         },
         2: {
-            "file": "../Graphes/Sources/oriented_graph_edges.dot",
-            "header": "p1 p2 p3 p4 p5 b1 b2 b3 b4",
+            "file": "../Graphs/Sources/oriented_graph_edges.dot",
+            "header": "p1 p2 p3 p4 p5 b1 b2 b3 b4, s1 s2 s3 s4 s5",
             "output": open("output_edges.txt", "w")
         }
     }
