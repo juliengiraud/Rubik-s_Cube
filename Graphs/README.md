@@ -4,7 +4,7 @@ Ce projet a pour but de représenter les relations entre les facettes d'un Rubik
 
 ## Objectifs
 
-1. Vérifier s'il existe une représentation des rotations sous la forme d'un graphe planaire orienté
+1. Vérifier s'il existe une représentation des rotations sous la forme d'un graphe planaire, voire d'un graphe planaire orienté
 
 2. Rassembler les données des rotations dans un fichier de façon structurée et réutilisable
 
