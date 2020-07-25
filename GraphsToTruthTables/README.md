@@ -10,7 +10,7 @@ Déjà il faut observer le graphe des rotations d'un Rubik's Cube
 
 ![Graphe des rotations d'un Rubik's Cube](../Graphs/Images/strict_graph_full.png)
 
-On peut remarquer qu'il y a en fait deux sous-graphe distincts, celui de gauche pour les coins et celui de droite pour les arêtes (plus d'explications sur la [page des graphes](../Graphs/README.md))
+On peut remarquer qu'il y a en fait deux sous-graphe distincts, celui de gauche pour les coins et celui de droite pour les arêtes (plus d'explications sur la [page des graphes](../Graphs))
 
 On peut en conclure que le traitement à effectuer sur les facettes des coins n'est pas le même que pour les arêtes, c'est la raison pour laquelle il faut générer deux tables de vérité
 
@@ -109,11 +109,11 @@ Ensuite il faut convertir nos valeurs en binaire, on se retrouve donc avec des l
 | ...     | ...      | ...    |
 ```
 
-On se retrouve avec exactement 288 lignes utiles (12×24) sauf qu'une table de vérité doit contenir un nombre de lignes égale à une puissance de 2, il manque donc 224 pour atteindre 512, soit pret de 44 % de chaque table de vérité
+On se retrouve avec exactement 288 lignes utiles (12×24) sauf qu'une table de vérité doit contenir un nombre de lignes égale à une puissance de 2, il manque donc 224 pour atteindre 512, soit pres de 44 % de chaque table de vérité
 
 Pour signifier que ces lignes ne sont pas à prendre en compte on utilisera des 2 en valeur de sortie
 
-Une fois que les tables de vérité contiennent bien les 512 lignes et que les lignes sont dans l'ordre on se retrouve avec quelque chose qui ressemble plus à ça
+Une fois que les tables de vérité contiennent bien les 512 lignes et que les lignes sont dans l'ordre on se retrouve avec quelque chose qui ressemble à ça
 
 ```text
 | Entrée             | Sortie |
@@ -129,4 +129,4 @@ Une fois que les tables de vérité contiennent bien les 512 lignes et que les l
 
 ---
 
-L'étape suivante est bien sûr de simplifier ces tables de vérité, [ça se passe ici](../TruthTableSolver/README.md)
+L'étape suivante est bien sûr de simplifier ces tables de vérité, [ça se passe ici](../TruthTableSolver)
