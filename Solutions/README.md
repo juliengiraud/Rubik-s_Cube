@@ -9,7 +9,7 @@ J'ai utilisé un projet opensource qui permet d'entrer manuellement des tables d
 
 ## Modifications
 
-Ce solver de tables de vérité ne colle pas vraiment avec mes données sources (des fichiers DOT)... J'ai donc fait un peu de bricolage en [Java](TruthTableSolver/src/cmdIn/ConvertisseurDOT.java)
+Ce solver de tables de vérité ne colle pas vraiment avec mes données car il est prévu pour entrer manuellement toutes les valeurs des tables de vérité dans l'ordre croissant des entrées. J'ai donc fait un fork du projet sur lequel j'ai ajouté une option pour entrer directement un fichier ([voir ici](https://github.com/juliengiraud/TruthTableSolver)).
 
 - Récupération des données de mes graphes à partir d'une liste de fichiers
 - Conversion des données de chaque fichier en tableau de la forme " (int) Entrée 1 | (int) Entrée 2 | (int) Sortie
