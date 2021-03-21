@@ -1,3 +1,0 @@
-Programme réalisé lorsque j'étais au lycée.
-Il a servi à trouver les algorithmes de l'étape des VLS sur un Kilominx.
-Cela a été réalisé à la demande de Clément Cherblanc.

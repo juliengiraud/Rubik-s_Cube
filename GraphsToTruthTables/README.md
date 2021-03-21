@@ -129,4 +129,4 @@ Une fois que les tables de vérité contiennent bien les 512 lignes et que les l
 
 ---
 
-L'étape suivante est bien sûr de simplifier ces tables de vérité, [ça se passe ici](../TruthTableSolver)
+L'étape suivante est bien sûr de simplifier ces tables de vérité, [ça se passe ici](https://github.com/juliengiraud/TruthTableSolver)
